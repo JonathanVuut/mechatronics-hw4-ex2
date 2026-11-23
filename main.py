@@ -1,5 +1,7 @@
 from pathlib import Path
 import sys
+import csv
+import numpy as np
 
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg, NavigationToolbar2QT
 from matplotlib.figure import Figure
@@ -112,8 +114,19 @@ class IceCreamDataWindow(QMainWindow):
         message.exec()
 
     def read_csv_data(self) -> None:
-        # TODO: Add CSV reading logic.
-        pass
+        self.temperatures=[]
+        self.revenues=[]
+
+        with open(self.selected_file, 'r') as f:
+            reader=csv.reader(f)
+            next(reader)
+            for row in reader:
+                if row:
+                    self.temperatures.append(float(row[0]))
+                    self.revenues.append(float(row[1]))
+                    
+        self.plot_data()
+
 
     def plot_data(self) -> None:
         self.axes.clear()
