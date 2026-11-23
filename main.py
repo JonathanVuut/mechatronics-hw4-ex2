@@ -124,36 +124,40 @@ class IceCreamDataWindow(QMainWindow):
                 if row:
                     self.temperatures.append(float(row[0]))
                     self.revenues.append(float(row[1]))
-                    
+
         self.plot_data()
 
 
     def plot_data(self) -> None:
         self.axes.clear()
         self.axes.set_facecolor("#ffffff")
-        self.axes.plot(
-            [0, 1, 2],
-            [0, 1, 0],
-            marker="o",
-            markersize=8,
-            linewidth=2.5,
-            color="#f97366",
-            markerfacecolor="#fbba74",
-            markeredgecolor="#ffffff",
-            markeredgewidth=1.5,
-        )
-        self.axes.set_title("Your sales story starts here", color="#24324b", pad=14)
-        self.axes.set_xlabel("X", color="#53627a")
-        self.axes.set_ylabel("Y", color="#53627a")
-        self.axes.tick_params(colors="#53627a")
-        self.axes.grid(True, color="#edf1f7", linewidth=0.8)
-        self.axes.set_axisbelow(True)
-        for spine in self.axes.spines.values():
-            spine.set_color("#e2e8f0")
+
+        if self.temperatures and self.revenues:
+            self.axes.scatter(self.temperatures, self.revenues, s=1)
+            m, b = np.polyfit(self.temperatures, self.revenues, 1)
+            temperature_range = np.linspace(
+                min(self.temperatures),
+                max(self.temperatures),
+                100,
+            )
+            self.axes.plot(
+                temperature_range,
+                m * temperature_range + b,
+                color="#6558d3",
+                linewidth=2,
+                label=f"y = {m:.2f}x + {b:.2f}",
+            )
+            self.axes.legend(frameon=False)
+
+        self.axes.set_title("Ice Cream Revenue vs. Temperature")
+        self.axes.set_xlabel("Temperature (°C)")
+        self.axes.set_ylabel("Revenue ($)")
+        self.axes.spines["top"].set_visible(False)
+        self.axes.spines["right"].set_visible(False)
+
         self.figure.tight_layout(pad=2)
         self.canvas.draw_idle()
-
-
+        
 def main() -> None:
     app = QApplication(sys.argv)
     stylesheet = Path(__file__).with_name("style.qss")
