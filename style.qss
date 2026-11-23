@@ -1,0 +1,115 @@
+QMainWindow {
+    background-color: #f5f7fb;
+    color: #24324b;
+}
+
+QWidget#headerCard {
+    background-color: #6558d3;
+    border: 1px solid #594bc6;
+    border-radius: 18px;
+}
+
+QLabel#heading {
+    background: transparent;
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+QLabel#subtitle {
+    background: transparent;
+    color: #e7e4ff;
+    font-size: 14px;
+}
+
+QWidget#plotCard {
+    background-color: #ffffff;
+    border: 1px solid #e6eaf2;
+    border-radius: 16px;
+}
+
+QPushButton {
+    background-color: #ff886f;
+    border: 1px solid #ff886f;
+    border-radius: 11px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 46px;
+    padding: 0 20px;
+}
+
+QPushButton#loadButton {
+    background-color: #6558d3;
+    border-color: #594bc6;
+}
+
+QPushButton#loadButton:hover {
+    background-color: #5749c5;
+    border-color: #4c3eb6;
+}
+
+QPushButton#loadButton:pressed {
+    background-color: #493ba9;
+    border-color: #403394;
+}
+
+QPushButton#aboutButton {
+    background-color: #ffffff;
+    border: 1px solid #d8deea;
+    color: #4a5871;
+    min-width: 120px;
+}
+
+QPushButton#aboutButton:hover {
+    background-color: #f0efff;
+    border-color: #bcb5f2;
+    color: #5145bb;
+}
+
+QPushButton:focus {
+    outline: 2px solid #897ff0;
+    outline-offset: 2px;
+}
+
+QToolBar {
+    background-color: #ffffff;
+    border: none;
+    spacing: 5px;
+    padding: 2px;
+}
+
+QToolBar QToolButton {
+    background-color: #fbfcff;
+    border: 1px solid #d6deed;
+    border-radius: 8px;
+    color: #34425b;
+    font-size: 13px;
+    min-height: 30px;
+    min-width: 30px;
+    padding: 4px;
+}
+
+QToolBar QToolButton:hover {
+    background-color: #f0efff;
+    border-color: #ddd9fb;
+}
+
+QToolBar QToolButton:pressed,
+QToolBar QToolButton:checked {
+    background-color: #e5e1ff;
+    border-color: #c9c2fa;
+}
+
+QToolBar QToolButton:disabled {
+    color: #aab3c2;
+}
+
+QMessageBox {
+    background-color: #ffffff;
+}
+
+QMessageBox QLabel {
+    color: #34425b;
+    font-size: 14px;
+}
